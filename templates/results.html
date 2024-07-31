@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats des Demandes d'Intervention</title>
+    <style>
+        /* Ajoutez votre CSS ici, il semble correct dans votre exemple */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .intervention-form {
+            width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #333333;
+        }
+
+        .header .details {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #4a90e2;
+        }
+
+        .field-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .field-group label {
+            width: 25%;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 10px;
+            color: #333333;
+        }
+
+        .field-group span {
+            width: 70%;
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+            color: #333333;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: gray;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+
+        .nature-intervention {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .nature-intervention li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .nature-intervention li span {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .materiel-informatique span {
+            background-color: #007bff;
+        }
+
+        .moyen-communication span {
+            background-color: #28a745;
+        }
+
+        .voiture-service span {
+            background-color: #ffc107;
+        }
+
+        .mobilier-bureau span {
+            background-color: #dc3545;
+        }
+
+        .informations-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .informations-table th,
+        .informations-table td {
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        .informations-table th {
+            background-color: #cbdcf0;
+            color: #333333;
+            text-align: left;
+        }
+
+        .informations-table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .rectangle-heading {
+            display: inline-block;
+            background-color: #cbdcf0;
+            color: #333333;
+            padding: 5px 230px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rectangle-headingg {
+            display: inline-block;
+            background-color: #cbdcf0;
+            color: #333333;
+            padding: 5px 310px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rectangle-headinggg {
+            display: inline-block;
+            background-color: #cbdcf0;
+            color: #333333;
+            padding: 5px 220px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .recommendation-options {
+            display: flex;
+            align-items: center;
+            margin-left: 80px;
+            margin-bottom: 20px;
+        }
+
+        .recommendation-options label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .visa-verifier-label {
+            margin-left: 350px;
+            margin-bottom: 40px;
+        }
+
+        .visa-labels {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .visa-labels label {
+            flex: 0 0 auto;
+            text-align: center;
+            margin: 0;
+            padding: 0 50px;
+        }
+
+        .request-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f4f7fc;
+        }
+
+        .request-header .logo {
+            flex: 0 0 auto;
+            width: 100px;
+            height: auto;
+        }
+
+        .request-header .title {
+            flex: 1;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #53575c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .request-header .info {
+            flex: 0 0 auto;
+            text-align: right;
+        }
+
+        .request-header .info span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 500px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            appearance: none;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            cursor: default;
+        }
+
+        .checkbox-option input[type="checkbox"]:checked {
+            background-color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .checkbox-option label {
+            margin-left: 5px;
+        }
+
+        .additional-info {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .additional-info span {
+            margin-right: 40px;
+            margin-left: 500px;
+            white-space: nowrap;
+        }
+
+        .line {
+            
+            border-bottom: 1px dashed #000;
+            width: 150px;
+        }
+        .con {
+            display: flex;
+            gap: 200px; /* Espace entre les éléments */
+            align-items: center; /* Aligne les éléments verticalement au centre */
+            margin: 20px;
+            margin-bottom: 80px; 
+        }
+
+        .con > div {
+            flex: 1; /* Chaque div prendra une largeur égale */
+            padding: 10px;
+        }
+        .download-container {
+            text-align: center;
+            margin-top: 1000px; /* Ajuste l'espace au-dessus du bouton */
+            margin-left: 10px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e74c3c; /* Couleur rouge pour le bouton */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .download-btn:hover {
+            background-color: #c0392b; /* Rouge plus foncé au survol */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+    </style>
+</head>
+<body>
+
+{% if demande %}
+    <div class="intervention-form">
+        <div class="request-header">
+            <img src="/static/logo.jpg" alt="Logo" class="logo">
+            <span class="title">DEMANDE D’INTERVENTION</span>
+            <div class="info">
+                <span>Code: 17FR.PS.AI</span>
+                <span>Version: 01</span>
+                <span>Date d'application : 13/06/2012</span>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Nature d'intervention :</h2>
+            <ul class="nature-intervention">
+                <li><span class="materiel-informatique"></span>Matériel informatique</li>
+                <li><span class="moyen-communication"></span>Moyen de communication</li>
+                <li><span class="voiture-service"></span>Voiture de service</li>
+                <li><span class="mobilier-bureau"></span>Mobilier de bureau</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Informations de l'émission</h2>
+            <table class="informations-table">
+                <tbody>
+                    <tr>
+                        <th>Date d'émission:</th>
+                        <td>{{ demande.date_emission }}</td>
+                    </tr>
+                    <tr>
+                        <th>Émetteur:</th>
+                        <td>{{ demande.emetteur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Département/Service:</th>
+                        <td>{{ demande.department }}</td>
+                    </tr>
+                    <tr>
+                        <th>Anomalie détectée:</th>
+                        <td>{{ demande.anomalie_detectee }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h2 class="rectangle-heading">VERIFICATION DE LA PANNE</h2>
+            <div class="field-group">
+                <label>Date d'analyse:</label>
+                <span>{{ demande.date_intervention }}</span>
+            </div>
+            <div class="field-group">
+                <label>Par Mme/Mr :</label>
+                <span>{% if demande.resultat == 'Efficace' %} X {% endif %}</span>
+            </div>
+            <div class="recommendation-options">
+                <label for="recommandations">Recommandations:</label>
+                <div class="checkbox-options">
+                    <input type="checkbox" id="intervention-interne" name="recommandations" value="intervention-interne" {% if 'Intervention en interne' in demande.recommandations %} checked {% endif %}>
+                    <label for="intervention-interne">Intervention en interne</label>
+                    <input type="checkbox" id="intervention-externe" name="recommandations" value="intervention-externe" {% if 'Intervention en externe' in demande.recommandations %} checked {% endif %}>
+                    <label for="intervention-externe">Intervention en externe</label>
+                </div>
+            </div>
+            <div class="visa-verifier-label">
+                <label>VISA DU VERIFICATEUR DE LA PANNE :</label>
+            </div>
+        </div>
+        <div>
+            <h2 class="rectangle-headingg">INTERVENTION</h2>
+            <div class="field-group">
+                <label>Date d'intervention:</label>
+                <span>{{ demande.date_intervention }}</span>
+            </div>
+            <div class="field-group">
+                <label>Type de prestation effectuée:</label>
+                <span>{{ demande.type_prestation }}</span>
+            </div>
+            <div class="field-group">
+                <label>Observations:</label>
+                <span>{{ demande.observations }}</span>
+            </div>
+        </div>
+        <div>
+            <h2 class="rectangle-headinggg">RESULTAT DE L'INTERVENTION</h2>
+            <div class="checkbox-container">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="efficace" disabled {% if demande.resultat == 'Efficace' %} checked {% endif %}>
+                    <label for="efficace">Efficace:</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="non-efficace" disabled {% if demande.resultat == 'Non efficace' %} checked {% endif %}>
+                    <label for="non-efficace">Non efficace:</label>
+                </div>
+            </div>
+            <div class="additional-info">
+                <span>A préciser</span>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="con">
+            <div>
+                <label>Visa Emetteur:</label>
+            </div>
+            <div>
+                <label>Nom & Visa Vérificateur :</label>
+            </div>
+        </div>
+        
+
+        
+
+        <div class="footer">
+            <div class="notes">
+                Ce document est la propriété exclusive de l'Agence Urbaine d'Essaouira
+            </div>
+        </div>
+        
+    </div>
+    <div class="download-container">
+        <a href="{{ url_for('telecharger_pdf', demande_id=demande._id) }}" class="download-btn">Télécharger l'affiche PDF</a>
+    </div>
+{% else %}
+    <p>Aucune demande trouvée.</p>
+{% endif %}
+
+</body>
+</html>
